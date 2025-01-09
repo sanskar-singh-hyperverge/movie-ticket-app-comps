@@ -39,7 +39,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
         ref={videoRef}
         className="absolute inset-0 w-full h-full object-cover"
         src={videoUrl}
-        autoPlay
+        autoPlay={false}
         muted
         loop
       />
