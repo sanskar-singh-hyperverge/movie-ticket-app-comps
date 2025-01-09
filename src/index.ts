@@ -17,3 +17,14 @@ export type {ButtonProps} from "./components/button/button"
 export type {DividerProps} from "./components/divider/divider"
 export type {FooterProps} from "./components/footer/footer"
 export type {StepperProps} from "./components/stepper/stepper"
+
+export {default as PaymentMethod} from "./components/paymentMethod/paymentMethod"
+export {default as SlideShow} from "./components/slideShow/slideShow"
+export {default as TicketCard} from "./components/ticketCard/ticketCard"
+export {default as Icon} from "./components/icon/icon"
+
+
+export type {PaymentMethodProps} from "./components/paymentMethod/paymentMethod"
+export type {SlideshowProps} from "./components/slideShow/slideShow"
+export type {TicketInfoProps} from "./components/ticketCard/ticketCard"
+export type {IconProps} from "./components/icon/icon"
