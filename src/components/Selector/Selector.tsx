@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 
-interface SelectorProps<T> {
+export interface SelectorProps<T> {
   options: T[];
   placeholder?: string;
   selected?: T;

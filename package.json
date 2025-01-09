@@ -1,19 +1,31 @@
 {
-  "name": "rcc",
-  "private": true,
-  "version": "0.0.0",
+  "name": "movie-design-hv",
+  "private": false,
+  "version": "1.0.0",
   "type": "module",
+  "main": "./dist/movie-design-hv.umd.js",
+  "module": "./dist/movie-design-hv.es.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/movie-design-hv.es.js",
+      "require": "./dist/movie-design-hv.umd.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./dist/style.css": "./dist/movie-design-hv.css"
+  },
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
-  },
-  "dependencies": {
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "build-storybook": "storybook build",
+    "chromatic": "npx chromatic --project-token=chpt_4602555a0e58806",
+    "prepare": "npm run build"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^3.2.3",
@@ -31,17 +43,21 @@
     "@types/react-dom": "^18.3.5",
     "@vitejs/plugin-react": "^4.3.4",
     "autoprefixer": "^10.4.20",
+    "chromatic": "^11.22.1",
     "eslint": "^9.17.0",
     "eslint-plugin-react-hooks": "^5.0.0",
     "eslint-plugin-react-refresh": "^0.4.16",
     "eslint-plugin-storybook": "^0.11.2",
     "globals": "^15.14.0",
     "postcss": "^8.4.49",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
     "storybook": "^8.4.7",
     "tailwindcss": "^3.4.17",
     "typescript": "~5.6.2",
     "typescript-eslint": "^8.18.2",
-    "vite": "^6.0.5"
+    "vite": "^6.0.7",
+    "vite-plugin-dts": "^4.4.0"
   },
   "eslintConfig": {
     "extends": [

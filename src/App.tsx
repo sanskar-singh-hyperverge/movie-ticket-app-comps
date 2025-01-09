@@ -1,16 +1,15 @@
-import React, { useState } from "react";
-import Counter from "./components/Counter/Counter"
+// import Counter from "./components/Counter/Counter"
 import BuffetCard from "./components/BuffetCard/BuffetCard"
-import Selector from "./components/Selector/Selector"
-import SeatSelector from "./components/SeatSelector/SeatSelector";
+// import Selector from "./components/Selector/Selector"
+// import SeatSelector from "./components/SeatSelector/SeatSelector";
 
 function App() {
-  const [selectedOption, setSelectedOption] = useState<string | null>(null);
-  const theaters = [
-    "NY City - Cinema Village",
-    "LA - Hollywood Theater",
-    "Chicago - Downtown Cinema",
-  ];
+  // const [selectedOption, setSelectedOption] = useState<string | null>(null);
+  // const theaters = [
+  //   "NY City - Cinema Village",
+  //   "LA - Hollywood Theater",
+    // "Chicago - Downtown Cinema",
+  // ];
 
 
   return (

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-interface CounterProps {
+export interface CounterProps {
   initialValue?: number;
   minValue?: number;
   maxValue?: number;

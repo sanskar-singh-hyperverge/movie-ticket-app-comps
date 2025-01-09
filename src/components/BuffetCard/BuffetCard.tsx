@@ -1,6 +1,6 @@
 import React from "react";
 
-interface BuffetCardProps {
+export interface BuffetCardProps {
   imageSrc: string;
   title: string;
   description: string[];

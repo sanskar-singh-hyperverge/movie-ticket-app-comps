@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-interface SeatSelectorProps {
+export interface SeatSelectorProps {
   rows: number;
   seatsPerRow: number;
   maxSelections: number;
