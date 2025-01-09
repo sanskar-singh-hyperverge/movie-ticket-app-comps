@@ -24,18 +24,20 @@ export {default as PaymentMethod} from "./components/paymentMethod/paymentMethod
 export {default as SlideShow} from "./components/slideShow/slideShow"
 export {default as TicketCard} from "./components/ticketCard/ticketCard"
 export {default as Icon} from "./components/icon/icon"
-
+export {default as HomeHero} from "./components/homeHero/homeHero"
 
 export type {PaymentMethodProps} from "./components/paymentMethod/paymentMethod"
 export type {SlideshowProps} from "./components/slideShow/slideShow"
 export type {TicketInfoProps} from "./components/ticketCard/ticketCard"
 export type {IconProps} from "./components/icon/icon"
+export type {HomeHeroProps} from "./components/homeHero/homeHero"
 
-export {default as Card} from "./components/Card/Card";
-export {default as StarRating} from "./components/StarRating/StarRating";
-export {default as Caraousel} from "./components/Carousel/Carousel";
-export {default as HeroSection} from "./components/HeroSection/HeroSection";
-export {default as Input} from "./components/Input/Input";
+ 
+export type {default as Card} from "./components/Card/Card";
+export type {default as StarRating} from "./components/StarRating/StarRating";
+export type {default as Caraousel} from "./components/Carousel/Carousel";
+export type {default as HeroSection} from "./components/HeroSection/HeroSection";
+export type {default as Input} from "./components/Input/Input";
 
 export type {CardProps} from "./components/Card/Card";
 export type {StarRatingProps} from "./components/StarRating/StarRating";
