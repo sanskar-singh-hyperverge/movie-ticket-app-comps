@@ -3,7 +3,8 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 
 // Import Swiper styles
-import "swiper/swiper-bundle.css";
+import "swiper/css";
+import "swiper/css/autoplay"; // Import Autoplay styles
 import Card from "../Card/Card";
 
 // Define the type for card data
@@ -23,6 +24,7 @@ export type CarouselProps = {
   slidesPerView?: number; // Optional: Number of slides to display at a time
   autoplay?: boolean; // Optional: Enable/disable autoplay
   autoplayDelay?: number; // Optional: Delay for autoplay in milliseconds
+  height?: string; // Optional: Height class for the container
 };
 
 const Carousel: React.FC<CarouselProps> = ({
@@ -30,9 +32,10 @@ const Carousel: React.FC<CarouselProps> = ({
   slidesPerView = 1, // Default: 1 slide per view
   autoplay = false, // Default: no autoplay
   autoplayDelay = 2000, // Default: 2 seconds
+  height = "h-64", // Default Tailwind height class
 }) => {
   return (
-    <div className="h-full">
+    <div className={`w-full ${height}`}>
       <Swiper
         className="h-full"
         spaceBetween={16} // Gap between slides (in pixels)
@@ -59,7 +62,7 @@ const Carousel: React.FC<CarouselProps> = ({
               borderStyle="border border-gray-300"
               justifyContent="end"
               alignItems="start"
-              className="h-[300px] w-full flex flex-col justify-end align-end items-start overflow-hidden" // Ensure Card fills the available space and overflow is hidden
+              className="w-full h-full flex flex-col flex-grow justify-end items-start overflow-hidden"
             >
               {/* Content inside the card */}
               <div className="p-4 text-white">
