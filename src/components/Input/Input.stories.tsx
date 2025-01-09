@@ -1,9 +1,9 @@
-// Input.stories.tsx
-import React from "react";
-import { ComponentStory, ComponentMeta } from "@storybook/react";
-import Input from "./Input";
-import "../../index.css"; 
 
+import { Meta, StoryObj } from "@storybook/react";
+import Input from "./Input";
+import "../../index.css"; // Make sure to import global styles if necessary
+
+// Storybook metadata with typing
 export default {
   title: "Components/Input",
   component: Input,
@@ -21,47 +21,65 @@ export default {
     wrapperClassName: { control: "text" },
     onChange: { action: "changed" },
   },
-} as ComponentMeta<typeof Input>;
+} as Meta<typeof Input>;
 
-const Template: ComponentStory<typeof Input> = (args) => <Input {...args} />;
+type Story = StoryObj<typeof Input>;
 
-export const TextInput = Template.bind({});
-TextInput.args = {
-  type: "text",
-  placeholder: "Enter your text",
-  value: "",
-  required: false,
-  className: "",
-  wrapperClassName: "",
+// Text Input Story
+export const TextInput: Story = {
+  args: {
+    type: "text",
+    placeholder: "Enter your text",
+    value: "",
+    required: false,
+    className: "",
+    wrapperClassName: "",
+  },
 };
 
-export const NumberInput = Template.bind({});
-NumberInput.args = {
-  type: "number",
-  placeholder: "Enter a number",
-  value: 123,
-  required: true,
+// Number Input Story
+export const NumberInput: Story = {
+  args: {
+    type: "number",
+    placeholder: "Enter a number",
+    value: 123,
+    required: true,
+    className: "",
+    wrapperClassName: "",
+  },
 };
 
-export const EmailInput = Template.bind({});
-EmailInput.args = {
-  type: "email",
-  placeholder: "Enter your email",
-  value: "",
-  required: true,
+// Email Input Story
+export const EmailInput: Story = {
+  args: {
+    type: "email",
+    placeholder: "Enter your email",
+    value: "",
+    required: true,
+    className: "",
+    wrapperClassName: "",
+  },
 };
 
-export const PasswordInput = Template.bind({});
-PasswordInput.args = {
-  type: "password",
-  placeholder: "Enter your password",
-  value: "",
-  required: true,
+// Password Input Story
+export const PasswordInput: Story = {
+  args: {
+    type: "password",
+    placeholder: "Enter your password",
+    value: "",
+    required: true,
+    className: "",
+    wrapperClassName: "",
+  },
 };
 
-export const DateInput = Template.bind({});
-DateInput.args = {
-  type: "date",
-  value: "2025-01-08",
-  required: false,
+// Date Input Story
+export const DateInput: Story = {
+  args: {
+    type: "date",
+    value: "2025-01-08",
+    required: false,
+    className: "",
+    wrapperClassName: "",
+  },
 };

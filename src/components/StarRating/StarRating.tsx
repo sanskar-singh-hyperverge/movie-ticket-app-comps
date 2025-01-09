@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 
-interface StarRatingProps {
+export interface StarRatingProps {
   rating: number; // The rating value to display
 }
 

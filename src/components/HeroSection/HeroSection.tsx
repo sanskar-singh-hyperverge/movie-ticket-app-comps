@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 
-type HeroSectionProps = {
+export type HeroSectionProps = {
   title: string;
   studio: string;
   rating: number; // IMDb rating

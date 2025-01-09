@@ -18,7 +18,7 @@ type CardData = {
 };
 
 // Props type for the Carousel component
-type CarouselProps = {
+export type CarouselProps = {
   cardsData: CardData[];
   slidesPerView?: number; // Optional: Number of slides to display at a time
   autoplay?: boolean; // Optional: Enable/disable autoplay

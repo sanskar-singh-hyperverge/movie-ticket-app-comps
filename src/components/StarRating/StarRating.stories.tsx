@@ -1,31 +1,39 @@
-import React from "react";
-import { Meta, Story } from "@storybook/react";
+
+import { Meta, StoryObj } from "@storybook/react";
 import "../../index.css"; // Import Tailwind CSS
 import StarRating from "./StarRating";
 
 export default {
   title: "Components/StarRating",
   component: StarRating,
-} as Meta;
+} as Meta<typeof StarRating>;
 
-const Template: Story<{ rating: number }> = (args) => <StarRating {...args} />;
+type Story = StoryObj<typeof StarRating>;
 
-export const ZeroStars = Template.bind({});
-ZeroStars.args = {
-  rating: 0
+// Zero Stars
+export const ZeroStars: Story = {
+  args: {
+    rating: 0,
+  },
 };
 
-export const HalfStar = Template.bind({});
-HalfStar.args = {
-  rating: 0.5,
+// Half Star
+export const HalfStar: Story = {
+  args: {
+    rating: 0.5,
+  },
 };
 
-export const ThreeStars = Template.bind({});
-ThreeStars.args = {
-  rating: 3,
+// Three Stars
+export const ThreeStars: Story = {
+  args: {
+    rating: 3,
+  },
 };
 
-export const FullStars = Template.bind({});
-FullStars.args = {
-  rating: 5,
+// Full Stars
+export const FullStars: Story = {
+  args: {
+    rating: 5,
+  },
 };

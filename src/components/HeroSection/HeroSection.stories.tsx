@@ -1,5 +1,6 @@
-import React from 'react';
-import HeroSection from './HeroSection'; // Adjust the path if necessary
+
+import HeroSection, { HeroSectionProps } from './HeroSection'; // Adjust the path if necessary
+import { StoryObj } from '@storybook/react'; // Import StoryObj for typing
 
 // Define Storybook metadata with typing
 export default {
@@ -15,27 +16,29 @@ export default {
   },
 } as const;
 
-// Typing the args properly
-const Template = (args: HeroSectionProps) => <HeroSection {...args} />;
+// Define the type of Story
+type Story = StoryObj<HeroSectionProps>;
 
 // Story 1: Basic Example
-export const Default = Template.bind({});
-Default.args = {
-  title: 'Kung Fu Panda 4',
-  studio: 'DreamWorks Animation',
-  rating: 8.1,
-  userRating: 4,
-  videoUrl: '/video.mp4',
-  posterUrl: '/kfp.jpg',
+export const Default: Story = {
+  args: {
+    title: 'Kung Fu Panda 4',
+    studio: 'DreamWorks Animation',
+    rating: 8.1,
+    userRating: 4,
+    videoUrl: '/video.mp4',
+    posterUrl: '/kfp.jpg',
+  },
 };
 
 // Story 2: Movie with high IMDb rating
-export const HighRating = Template.bind({});
-HighRating.args = {
-  title: 'The Dark Knight',
-  studio: 'Warner Bros.',
-  rating: 9.0,
-  userRating: 5,
-  videoUrl: '/video.mp4',
-  posterUrl: '/interstellar.jpeg',
+export const HighRating: Story = {
+  args: {
+    title: 'The Dark Knight',
+    studio: 'Warner Bros.',
+    rating: 9.0,
+    userRating: 5,
+    videoUrl: '/video.mp4',
+    posterUrl: '/interstellar.jpeg',
+  },
 };

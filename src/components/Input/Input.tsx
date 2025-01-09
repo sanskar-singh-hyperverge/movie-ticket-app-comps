@@ -1,6 +1,6 @@
 import React from "react";
 
-interface InputProps {
+export interface InputProps {
   type?: "text" | "number" | "email" | "password" | "date"; // Input type
   value?: string | number; // Default value
   placeholder?: string; // Placeholder text

@@ -2,7 +2,7 @@
 
 import React from "react";
 
-type CardProps = {
+export type CardProps = {
   id: string | number;
   backgroundImages?: string[];
   backgroundVideo?: string;

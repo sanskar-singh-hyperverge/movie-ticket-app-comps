@@ -63,5 +63,8 @@
     "extends": [
       "plugin:storybook/recommended"
     ]
+  },
+  "dependencies": {
+    "swiper": "^11.2.0"
   }
 }

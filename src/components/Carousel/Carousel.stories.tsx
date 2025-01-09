@@ -1,9 +1,10 @@
-import React from "react";
-import { Meta, Story } from "@storybook/react";
+
+import { Meta, StoryObj } from "@storybook/react";
 import Carousel, { CarouselProps } from "./Carousel";
-import Card from "../Card/Card";
+
 import "../../index.css";
 
+// Storybook metadata with typing
 export default {
   title: "Components/Carousel",
   component: Carousel,
@@ -21,8 +22,9 @@ export default {
       defaultValue: 2000,
     },
   },
-} as Meta;
+} as Meta<CarouselProps>;
 
+// Card data example
 const cardData = [
   {
     id: 1,
@@ -50,62 +52,71 @@ const cardData = [
   },
 ];
 
-const Template: Story<CarouselProps> = (args) => (
-  <Carousel {...args} />
-);
+// Using StoryObj type for each story
+type Story = StoryObj<CarouselProps>;
 
-export const Default = Template.bind({});
-Default.args = {
-  cardsData: cardData,
-  slidesPerView: 1,
-  autoplay: false,
-  autoplayDelay: 2000,
+// Default Story
+export const Default: Story = {
+  args: {
+    cardsData: cardData,
+    slidesPerView: 1,
+    autoplay: false,
+    autoplayDelay: 2000,
+  },
 };
 
-export const AutoplayEnabled = Template.bind({});
-AutoplayEnabled.args = {
-  cardsData: cardData,
-  slidesPerView: 1,
-  autoplay: true,
-  autoplayDelay: 3000, // Set autoplay delay to 3 seconds
+// Autoplay Enabled Story
+export const AutoplayEnabled: Story = {
+  args: {
+    cardsData: cardData,
+    slidesPerView: 1,
+    autoplay: true,
+    autoplayDelay: 3000, // Set autoplay delay to 3 seconds
+  },
 };
 
-export const MultipleSlides = Template.bind({});
-MultipleSlides.args = {
-  cardsData: cardData,
-  slidesPerView: 2,
-  autoplay: false,
+// Multiple Slides Visible Story
+export const MultipleSlides: Story = {
+  args: {
+    cardsData: cardData,
+    slidesPerView: 2,
+    autoplay: false,
+  },
 };
 
-export const LongDescription = Template.bind({});
-LongDescription.args = {
-  cardsData: [
-    {
-      id: 4,
-      title: "The Shawshank Redemption",
-      subtitle: "1994 | Drama",
-      description:
-        "Two imprisoned men bond over several years, finding solace and eventual redemption through acts of common decency. A powerful narrative about hope, friendship, and justice.",
-      backgroundImages: ["/movieimage.webp"],
-    },
-    ...cardData,
-  ],
-  slidesPerView: 1,
-  autoplay: false,
+// Long Description for Movie
+export const LongDescription: Story = {
+  args: {
+    cardsData: [
+      {
+        id: 4,
+        title: "The Shawshank Redemption",
+        subtitle: "1994 | Drama",
+        description:
+          "Two imprisoned men bond over several years, finding solace and eventual redemption through acts of common decency. A powerful narrative about hope, friendship, and justice.",
+        backgroundImages: ["/movieimage.webp"],
+      },
+      ...cardData,
+    ],
+    slidesPerView: 1,
+    autoplay: false,
+  },
 };
 
-export const WithoutTitle = Template.bind({});
-WithoutTitle.args = {
-  cardsData: [
-    {
-      id: 5,
-      subtitle: "2005 | Horror, Thriller",
-      description:
-        "A group of friends get trapped in an abandoned house and discover it is haunted.",
-      backgroundImages: ["/movieimage.webp"],
-    },
-    ...cardData,
-  ],
-  slidesPerView: 1,
-  autoplay: false,
+// Without Title Story
+export const WithoutTitle: Story = {
+  args: {
+    cardsData: [
+      {
+        id: 5,
+        subtitle: "2005 | Horror, Thriller",
+        description:
+          "A group of friends get trapped in an abandoned house and discover it is haunted.",
+        backgroundImages: ["/movieimage.webp"],
+      },
+      ...cardData,
+    ],
+    slidesPerView: 1,
+    autoplay: false,
+  },
 };
