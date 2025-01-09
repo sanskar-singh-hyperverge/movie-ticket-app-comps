@@ -33,11 +33,11 @@ export type {IconProps} from "./components/icon/icon"
 export type {HomeHeroProps} from "./components/homeHero/homeHero"
 
  
-export type {default as Card} from "./components/Card/Card";
-export type {default as StarRating} from "./components/StarRating/StarRating";
-export type {default as Caraousel} from "./components/Carousel/Carousel";
-export type {default as HeroSection} from "./components/HeroSection/HeroSection";
-export type {default as Input} from "./components/Input/Input";
+export {default as Card} from "./components/Card/Card";
+export {default as StarRating} from "./components/StarRating/StarRating";
+export {default as Caraousel} from "./components/Carousel/Carousel";
+export {default as HeroSection} from "./components/HeroSection/HeroSection";
+export {default as Input} from "./components/Input/Input";
 
 export type {CardProps} from "./components/Card/Card";
 export type {StarRatingProps} from "./components/StarRating/StarRating";
