@@ -41,6 +41,8 @@ export {default as Caraousel} from "./components/Carousel/Carousel";
 export {default as HeroSection} from "./components/HeroSection/HeroSection";
 export {default as Input} from "./components/Input/Input";
 export {default as CardSlider} from "./components/CardSlider/CardSlider";
+export {default as GenericNav} from "./components/genericNav/genericnav";
+export {default as TicketDetailsSelector} from "./components/ticketSelector/ticketSelector";
 
 export type {CardProps} from "./components/Card/Card";
 export type {StarRatingProps} from "./components/StarRating/StarRating";
@@ -48,3 +50,5 @@ export type {HeroSectionProps} from "./components/HeroSection/HeroSection";
 export type {InputProps} from "./components/Input/Input";
 export type {CarouselProps} from "./components/Carousel/Carousel";
 export type {CardSliderProps} from "./components/CardSlider/CardSlider";
+export type {GenericNavProps} from "./components/genericNav/genericnav";
+export type {TicketDetailsSelectorProps} from "./components/ticketSelector/ticketSelector";
