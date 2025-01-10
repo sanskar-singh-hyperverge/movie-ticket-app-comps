@@ -1,122 +1,58 @@
 
 import { Meta, StoryObj } from "@storybook/react";
-import Carousel, { CarouselProps } from "./Carousel";
-
+import Carousel, { CarouselProps } from "../Carousel/Carousel"; // Import the Carousel component
 import "../../index.css";
-
-// Storybook metadata with typing
+// Default export for Storybook metadata
 export default {
   title: "Components/Carousel",
   component: Carousel,
-  argTypes: {
-    slidesPerView: {
-      control: { type: "number" },
-      defaultValue: 1,
-    },
-    autoplay: {
-      control: { type: "boolean" },
-      defaultValue: false,
-    },
-    autoplayDelay: {
-      control: { type: "number" },
-      defaultValue: 2000,
-    },
-  },
 } as Meta<CarouselProps>;
 
-// Card data example
-const cardData = [
+// Example data for the carousel slides
+const slides = [
   {
-    id: 1,
-    title: "Inception",
-    subtitle: "2010 | Sci-Fi, Thriller",
-    description:
-      "A skilled thief is offered a chance to have his past crimes forgiven by implanting an idea into a target's subconscious.",
-    backgroundImages: ["/movieimage.webp"],
+    image: "https://via.placeholder.com/1200x500?text=Slide+1",
+    title: "Slide 1",
+    description: "This is the first slide",
   },
   {
-    id: 2,
-    title: "The Dark Knight",
-    subtitle: "2008 | Action, Crime, Drama",
-    description:
-      "Batman faces the Joker, a criminal mastermind who seeks to create chaos in Gotham City.",
-    backgroundImages: ["/movieimage.webp"],
+    image: "https://via.placeholder.com/1200x500?text=Slide+2",
+    title: "Slide 2",
+    description: "This is the second slide",
   },
   {
-    id: 3,
-    title: "Interstellar",
-    subtitle: "2014 | Adventure, Drama, Sci-Fi",
-    description:
-      "A team of explorers travels through a wormhole in space in an attempt to ensure humanity's survival.",
-    backgroundImages: ["/movieimage.webp"],
+    image: "https://via.placeholder.com/1200x500?text=Slide+3",
+    title: "Slide 3",
+    description: "This is the third slide",
+  },
+  {
+    image: "https://via.placeholder.com/1200x500?text=Slide+4",
+    title: "Slide 4",
+    description: "This is the fourth slide",
   },
 ];
 
-// Using StoryObj type for each story
-type Story = StoryObj<CarouselProps>;
-
-// Default Story
-export const Default: Story = {
+// Stories using StoryObj format
+export const Default: StoryObj<CarouselProps> = {
   args: {
-    cardsData: cardData,
-    slidesPerView: 1,
-    autoplay: false,
-    autoplayDelay: 2000,
+    slides,
+    interval: 3000, // Autoscroll interval
   },
 };
 
-// Autoplay Enabled Story
-export const AutoplayEnabled: Story = {
+export const CustomInterval: StoryObj<CarouselProps> = {
   args: {
-    cardsData: cardData,
-    slidesPerView: 1,
-    autoplay: true,
-    autoplayDelay: 3000, // Set autoplay delay to 3 seconds
+    slides,
+    interval: 5000, // Longer autoscroll interval
   },
 };
 
-// Multiple Slides Visible Story
-export const MultipleSlides: Story = {
+export const NoDescription: StoryObj<CarouselProps> = {
   args: {
-    cardsData: cardData,
-    slidesPerView: 2,
-    autoplay: false,
-  },
-};
-
-// Long Description for Movie
-export const LongDescription: Story = {
-  args: {
-    cardsData: [
-      {
-        id: 4,
-        title: "The Shawshank Redemption",
-        subtitle: "1994 | Drama",
-        description:
-          "Two imprisoned men bond over several years, finding solace and eventual redemption through acts of common decency. A powerful narrative about hope, friendship, and justice.",
-        backgroundImages: ["/movieimage.webp"],
-      },
-      ...cardData,
-    ],
-    slidesPerView: 1,
-    autoplay: false,
-  },
-};
-
-// Without Title Story
-export const WithoutTitle: Story = {
-  args: {
-    cardsData: [
-      {
-        id: 5,
-        subtitle: "2005 | Horror, Thriller",
-        description:
-          "A group of friends get trapped in an abandoned house and discover it is haunted.",
-        backgroundImages: ["/movieimage.webp"],
-      },
-      ...cardData,
-    ],
-    slidesPerView: 1,
-    autoplay: false,
+    slides: slides.map(({ image, title }) => ({
+      image,
+      title,
+    })),
+    interval: 3000,
   },
 };

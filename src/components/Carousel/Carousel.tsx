@@ -1,85 +1,101 @@
-import React from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay } from "swiper/modules";
+import React, { useState, useEffect } from "react";
 
-// Import Swiper styles
-import "swiper/css";
-import "swiper/css/autoplay"; // Import Autoplay styles
-import Card from "../Card/Card";
+interface Slide {
+  image: string;
+  title?: string;
+  description?: string;
+}
 
-// Define the type for card data
-type CardData = {
-  id: number;
-  backgroundImages?: string[]; // Array of background image URLs
-  backgroundVideo?: string; // Optional: Background video URL
-  backgroundColor?: string; // Optional: Background color
-  title?: string; // Optional: Title text
-  subtitle?: string; // Optional: Subtitle text
-  description?: string; // Optional: Description text
-};
+export interface CarouselProps {
+  slides: Slide[];
+  interval?: number; // Autoscroll interval in milliseconds
+}
 
-// Props type for the Carousel component
-export type CarouselProps = {
-  cardsData: CardData[];
-  slidesPerView?: number; // Optional: Number of slides to display at a time
-  autoplay?: boolean; // Optional: Enable/disable autoplay
-  autoplayDelay?: number; // Optional: Delay for autoplay in milliseconds
-  height?: string; // Optional: Height class for the container
-};
+const Carousel: React.FC<CarouselProps> = ({ slides, interval = 3000 }) => {
+  const [currentIndex, setCurrentIndex] = useState(0);
 
-const Carousel: React.FC<CarouselProps> = ({
-  cardsData,
-  slidesPerView = 1, // Default: 1 slide per view
-  autoplay = false, // Default: no autoplay
-  autoplayDelay = 2000, // Default: 2 seconds
-  height = "h-64", // Default Tailwind height class
-}) => {
+  // Autoscroll logic
+  useEffect(() => {
+    const autoScroll = setInterval(() => {
+      setCurrentIndex((prevIndex) =>
+        prevIndex === slides.length - 1 ? 0 : prevIndex + 1
+      );
+    }, interval);
+
+    return () => clearInterval(autoScroll); // Cleanup on component unmount
+  }, [slides.length, interval]);
+
+  const handlePrev = () => {
+    setCurrentIndex((prevIndex) =>
+      prevIndex === 0 ? slides.length - 1 : prevIndex - 1
+    );
+  };
+
+  const handleNext = () => {
+    setCurrentIndex((prevIndex) =>
+      prevIndex === slides.length - 1 ? 0 : prevIndex + 1
+    );
+  };
+
   return (
-    <div className={`w-full ${height}`}>
-      <Swiper
-        className="h-full"
-        spaceBetween={16} // Gap between slides (in pixels)
-        slidesPerView={slidesPerView} // Number of visible slides
-        loop={true} // Enable looping
-        modules={autoplay ? [Autoplay] : []} // Include Autoplay module conditionally
-        autoplay={
-          autoplay
-            ? {
-                delay: autoplayDelay,
-                disableOnInteraction: false,
-              }
-            : undefined // Remove autoplay configuration if autoplay is false
-        }
+    <div className="relative w-full h-[500px] overflow-hidden rounded-lg">
+      {/* Slides */}
+      <div
+        className="flex transition-transform duration-500"
+        style={{
+          transform: `translateX(-${currentIndex * 100}%)`,
+        }}
       >
-        {cardsData.map((card) => (
-          <SwiperSlide key={card.id} className="h-full">
-            <Card
-              id={card.id}
-              backgroundImages={card.backgroundImages} // Array of images
-              backgroundVideo={card.backgroundVideo} // Background video URL if available
-              backgroundColor={card.backgroundColor}
-              rounded="rounded-lg"
-              borderStyle="border border-gray-300"
-              justifyContent="end"
-              alignItems="start"
-              className="w-full h-full flex flex-col flex-grow justify-end items-start overflow-hidden"
-            >
-              {/* Content inside the card */}
-              <div className="p-4 text-white">
-                {card.title && <h3 className="text-xl font-bold">{card.title}</h3>}
-                {card.subtitle && (
-                  <p className="text-sm text-gray-300 mt-1">{card.subtitle}</p>
+        {slides.map((slide, index) => (
+          <div
+            key={index}
+            className="w-full flex-shrink-0 h-[500px] relative"
+          >
+            <img
+              src={slide.image}
+              alt={slide.title || "Carousel Image"}
+              className="w-full h-full object-cover rounded-lg"
+            />
+            {(slide.title || slide.description) && (
+              <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 text-white p-4 rounded-b-lg">
+                {slide.title && (
+                  <h2 className="text-lg font-bold">{slide.title}</h2>
                 )}
-                {card.description && (
-                  <p className="mt-4 text-gray-200 text-sm line-clamp-3">
-                    {card.description}
-                  </p>
+                {slide.description && (
+                  <p className="text-sm">{slide.description}</p>
                 )}
               </div>
-            </Card>
-          </SwiperSlide>
+            )}
+          </div>
         ))}
-      </Swiper>
+      </div>
+
+      {/* Controls */}
+      <button
+        onClick={handlePrev}
+        className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full hover:bg-gray-700"
+      >
+        ❮
+      </button>
+      <button
+        onClick={handleNext}
+        className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full hover:bg-gray-700"
+      >
+        ❯
+      </button>
+
+      {/* Dots */}
+      <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+        {slides.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => setCurrentIndex(index)}
+            className={`w-3 h-3 rounded-full ${
+              index === currentIndex ? "bg-white" : "bg-gray-500"
+            }`}
+          ></button>
+        ))}
+      </div>
     </div>
   );
 };
