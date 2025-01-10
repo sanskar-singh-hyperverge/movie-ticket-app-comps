@@ -1,64 +1,74 @@
 import { Meta, StoryObj } from "@storybook/react";
-import CardSlider, { CardSliderProps } from "../CardSlider/CardSlider";
-import "../../index.css";
+import CardSlider, { CardSliderProps } from "./CardSlider";
 
-// Default export for Storybook metadata
-export default {
+const meta: Meta<typeof CardSlider> = {
   title: "Components/CardSlider",
   component: CardSlider,
-  parameters: {
-    layout: "fullscreen", // Ensures the slider uses the full width of the Storybook canvas
-  },
-} as Meta<CardSliderProps>;
-
-// Data for the cards inside the CardSlider
-const cardsData = [
-  {
-    image: "https://via.placeholder.com/300x400?text=Card+1",
-    title: "Card 1",
-    description: "This is the first card",
-  },
-  {
-    image: "https://via.placeholder.com/300x400?text=Card+2",
-    title: "Card 2",
-    description: "This is the second card",
-  },
-  {
-    image: "https://via.placeholder.com/300x400?text=Card+3",
-    title: "Card 3",
-    description: "This is the third card",
-  },
-  {
-    image: "https://via.placeholder.com/300x400?text=Card+4",
-    title: "Card 4",
-    description: "This is the fourth card",
-  },
-];
-
-// Stories using StoryObj format
-export const Default: StoryObj<CardSliderProps> = {
-  args: {
-    cardsData,
-    cardWidth: "153px", // Default card size
-    cardHeight: "204px",
+  argTypes: {
+    heading: {
+      description: "Title text displayed above the card slider, with a bullet point before it.",
+      control: "text",
+    },
+    cardsData: {
+      description: "Array of card data with image, title, and optional description.",
+      control: "object",
+    },
+    cardWidth: {
+      description: "Width of the individual card.",
+      control: "text",
+      defaultValue: "16rem",
+    },
+    cardHeight: {
+      description: "Height of the individual card.",
+      control: "text",
+      defaultValue: "24rem",
+    },
   },
 };
 
-export const CustomSize: StoryObj<CardSliderProps> = {
+export default meta;
+
+type Story = StoryObj<typeof CardSlider>;
+
+export const Default: Story = {
   args: {
-    cardsData,
-    cardWidth: "20rem", // Custom card size
-    cardHeight: "28rem",
+    heading: "Featured Cards",
+    cardsData: [
+      {
+        image: "https://via.placeholder.com/153x204.png?text=Card+1",
+        title: "Card 1",
+        description: "Description for Card 1",
+      },
+      {
+        image: "https://via.placeholder.com/153x204.png?text=Card+2",
+        title: "Card 2",
+        description: "Description for Card 2",
+      },
+      {
+        image: "https://via.placeholder.com/153x204.png?text=Card+3",
+        title: "Card 3",
+        description: "Description for Card 3",
+      },
+    ],
   },
 };
 
-export const WithoutDescription: StoryObj<CardSliderProps> = {
+export const WithoutDescription: Story = {
   args: {
-    cardsData: cardsData.map(({ image, title }) => ({
-      image,
-      title, // Removed descriptions
-    })),
-    cardWidth: "16rem",
-    cardHeight: "24rem",
+    heading: "Card Showcase",
+    cardsData: [
+      {
+        image: "https://via.placeholder.com/153x204.png?text=Card+1",
+        title: "Card 1",
+      },
+      {
+        image: "https://via.placeholder.com/153x204.png?text=Card+2",
+        title: "Card 2",
+      },
+      {
+        image: "https://via.placeholder.com/153x204.png?text=Card+3",
+        title: "Card 3",
+      },
+    ],
   },
 };

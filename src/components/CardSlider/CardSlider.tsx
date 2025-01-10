@@ -12,6 +12,7 @@ export interface CardSliderProps {
   cardsData: Omit<CardProps, "cardWidth" | "cardHeight">[]; // Exclude width/height from input data
   cardWidth?: string; // Optional width for all cards
   cardHeight?: string; // Optional height for all cards
+  heading?: string; // Heading text above the slider
 }
 
 const Card: React.FC<CardProps> = ({
@@ -42,6 +43,7 @@ const CardSlider: React.FC<CardSliderProps> = ({
   cardsData,
   cardWidth = "16rem",
   cardHeight = "24rem",
+  heading = "", // Default value for heading is empty
 }) => {
   const sliderRef = React.useRef<HTMLDivElement>(null);
 
@@ -74,42 +76,53 @@ const CardSlider: React.FC<CardSliderProps> = ({
   };
 
   return (
-    <div
-      ref={sliderRef}
-      className="overflow-x-auto scrollbar-hidden flex gap-6"
-      onMouseDown={handleMouseDown}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeaveOrUp}
-      onMouseUp={handleMouseLeaveOrUp}
-      onTouchStart={(e) => {
-        // Handle touch start for mobile
-        startX.current = e.touches[0].clientX;
-        scrollLeft.current = sliderRef.current ? sliderRef.current.scrollLeft : 0;
-        isDragging.current = true;
-      }}
-      onTouchMove={(e) => {
-        // Handle touch move for mobile
-        if (!isDragging.current || !sliderRef.current) return;
-        const x = e.touches[0].clientX;
-        const walk = (x - startX.current) * 1.5;
-        sliderRef.current.scrollLeft = scrollLeft.current - walk;
-      }}
-      onTouchEnd={() => {
-        // Handle touch end for mobile
-        isDragging.current = false;
-      }}
-      style={{ cursor: isDragging.current ? "grabbing" : "grab" }} // Change cursor on drag
-    >
-      {cardsData.map((card, index) => (
-        <Card
-          key={index}
-          image={card.image}
-          title={card.title}
-          description={card.description}
-          cardWidth={cardWidth}
-          cardHeight={cardHeight}
-        />
-      ))}
+    <div>
+      {/* Title with Bullet Dot */}
+      {heading && (
+        <div className="flex items-center space-x-2 mb-4">
+          <div className="w-2.5 h-2.5 rounded-full bg-white" /> {/* Bullet dot */}
+          <h2 className="text-white font-semibold">{heading}</h2>
+        </div>
+      )}
+
+      {/* Card Slider Container */}
+      <div
+        ref={sliderRef}
+        className="overflow-x-auto scrollbar-hidden flex gap-6"
+        onMouseDown={handleMouseDown}
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeaveOrUp}
+        onMouseUp={handleMouseLeaveOrUp}
+        onTouchStart={(e) => {
+          // Handle touch start for mobile
+          startX.current = e.touches[0].clientX;
+          scrollLeft.current = sliderRef.current ? sliderRef.current.scrollLeft : 0;
+          isDragging.current = true;
+        }}
+        onTouchMove={(e) => {
+          // Handle touch move for mobile
+          if (!isDragging.current || !sliderRef.current) return;
+          const x = e.touches[0].clientX;
+          const walk = (x - startX.current) * 1.5;
+          sliderRef.current.scrollLeft = scrollLeft.current - walk;
+        }}
+        onTouchEnd={() => {
+          // Handle touch end for mobile
+          isDragging.current = false;
+        }}
+        style={{ cursor: isDragging.current ? "grabbing" : "grab" }} // Change cursor on drag
+      >
+        {cardsData.map((card, index) => (
+          <Card
+            key={index}
+            image={card.image}
+            title={card.title}
+            description={card.description}
+            cardWidth={cardWidth}
+            cardHeight={cardHeight}
+          />
+        ))}
+      </div>
     </div>
   );
 };

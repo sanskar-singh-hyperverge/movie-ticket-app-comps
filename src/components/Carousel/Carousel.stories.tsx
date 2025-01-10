@@ -1,4 +1,3 @@
-
 import { Meta, StoryObj } from "@storybook/react";
 import Carousel, { CarouselProps } from "./Carousel";
 
@@ -24,6 +23,11 @@ const meta: Meta<typeof Carousel> = {
       description: "Height of the carousel component.",
       control: "text",
       defaultValue: "146px",
+    },
+    heading: {
+      description: "Heading text displayed above the carousel with a dot.",
+      control: "text",
+      defaultValue: "Featured Slides", // Default heading text
     },
   },
 };
@@ -57,6 +61,7 @@ export const Default: Story = {
     interval: 3000,
     width: "293px",
     height: "146px",
+    heading: "Featured Slides", // Add heading with dot to the story
   },
 };
 
@@ -77,5 +82,6 @@ export const NoDescription: Story = {
     interval: 5000,
     width: "293px",
     height: "146px",
+    heading: "Slide Showcase", // Add heading with dot to the story
   },
 };
