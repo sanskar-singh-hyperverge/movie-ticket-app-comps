@@ -1,85 +1,90 @@
-
+import  { useState } from "react";
 import { Meta, StoryObj } from "@storybook/react";
-import Input from "./Input";
-import "../../index.css"; // Make sure to import global styles if necessary
+import Input, { InputProps } from "./Input";
 
-// Storybook metadata with typing
 export default {
   title: "Components/Input",
   component: Input,
   argTypes: {
-    type: {
-      control: {
-        type: "select",
-        options: ["text", "number", "email", "password", "date"],
-      },
-    },
-    value: { control: "text" },
-    placeholder: { control: "text" },
-    required: { control: "boolean" },
-    className: { control: "text" },
-    wrapperClassName: { control: "text" },
-    onChange: { action: "changed" },
+    onChange: { action: "changed" }, // Track onChange action
   },
-} as Meta<typeof Input>;
+} as Meta;
 
-type Story = StoryObj<typeof Input>;
-
-// Text Input Story
-export const TextInput: Story = {
+const Default: StoryObj<InputProps> = {
   args: {
     type: "text",
-    placeholder: "Enter your text",
     value: "",
+    placeholder: "Enter text",
     required: false,
-    className: "",
-    wrapperClassName: "",
+    className: "border-gray-300",
+  },
+  render: (args) => {
+    const [inputValue, setInputValue] = useState(args.value || "");
+
+    const handleChange = (value: string) => {
+      setInputValue(value);
+    };
+
+    return (
+      <Input
+        {...args}
+        value={inputValue}
+        onChange={handleChange}
+      />
+    );
   },
 };
 
-// Number Input Story
-export const NumberInput: Story = {
-  args: {
-    type: "number",
-    placeholder: "Enter a number",
-    value: 123,
-    required: true,
-    className: "",
-    wrapperClassName: "",
-  },
-};
-
-// Email Input Story
-export const EmailInput: Story = {
-  args: {
-    type: "email",
-    placeholder: "Enter your email",
-    value: "",
-    required: true,
-    className: "",
-    wrapperClassName: "",
-  },
-};
-
-// Password Input Story
-export const PasswordInput: Story = {
+const WithPassword: StoryObj<InputProps> = {
   args: {
     type: "password",
-    placeholder: "Enter your password",
-    value: "",
+    value: "password123",
+    placeholder: "Enter password",
     required: true,
-    className: "",
-    wrapperClassName: "",
+    className: "border-red-500",
+    
+  },
+  render: (args) => {
+    const [inputValue, setInputValue] = useState(args.value || "");
+
+    const handleChange = (value: string) => {
+      setInputValue(value);
+    };
+
+    return (
+      <Input
+        {...args}
+        value={inputValue}
+        onChange={handleChange}
+      />
+    );
   },
 };
 
-// Date Input Story
-export const DateInput: Story = {
+const WithNumber: StoryObj<InputProps> = {
   args: {
-    type: "date",
-    value: "2025-01-08",
-    required: false,
-    className: "",
-    wrapperClassName: "",
+    type: "number",
+    value: 42,
+    placeholder: "Enter a number",
+    required: true,
+    className: "border-blue-500",
+    
+  },
+  render: (args) => {
+    const [inputValue, setInputValue] = useState(args.value || "");
+
+    const handleChange = (value: string) => {
+      setInputValue(value);
+    };
+
+    return (
+      <Input
+        {...args}
+        value={inputValue}
+        onChange={handleChange}
+      />
+    );
   },
 };
+
+export { Default, WithPassword, WithNumber };
