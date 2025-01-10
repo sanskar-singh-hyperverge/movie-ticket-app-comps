@@ -1,58 +1,81 @@
 
 import { Meta, StoryObj } from "@storybook/react";
-import Carousel, { CarouselProps } from "../Carousel/Carousel"; // Import the Carousel component
-import "../../index.css";
-// Default export for Storybook metadata
-export default {
+import Carousel, { CarouselProps } from "./Carousel";
+
+const meta: Meta<typeof Carousel> = {
   title: "Components/Carousel",
   component: Carousel,
-} as Meta<CarouselProps>;
-
-// Example data for the carousel slides
-const slides = [
-  {
-    image: "https://via.placeholder.com/1200x500?text=Slide+1",
-    title: "Slide 1",
-    description: "This is the first slide",
-  },
-  {
-    image: "https://via.placeholder.com/1200x500?text=Slide+2",
-    title: "Slide 2",
-    description: "This is the second slide",
-  },
-  {
-    image: "https://via.placeholder.com/1200x500?text=Slide+3",
-    title: "Slide 3",
-    description: "This is the third slide",
-  },
-  {
-    image: "https://via.placeholder.com/1200x500?text=Slide+4",
-    title: "Slide 4",
-    description: "This is the fourth slide",
-  },
-];
-
-// Stories using StoryObj format
-export const Default: StoryObj<CarouselProps> = {
-  args: {
-    slides,
-    interval: 3000, // Autoscroll interval
+  argTypes: {
+    slides: {
+      description: "Array of slides with image, title, description, and optional onClick.",
+      control: "object",
+    },
+    interval: {
+      description: "Time interval in milliseconds for auto-scrolling.",
+      control: "number",
+      defaultValue: 3000,
+    },
+    width: {
+      description: "Width of the carousel component.",
+      control: "text",
+      defaultValue: "293px",
+    },
+    height: {
+      description: "Height of the carousel component.",
+      control: "text",
+      defaultValue: "146px",
+    },
   },
 };
 
-export const CustomInterval: StoryObj<CarouselProps> = {
-  args: {
-    slides,
-    interval: 5000, // Longer autoscroll interval
-  },
-};
+export default meta;
 
-export const NoDescription: StoryObj<CarouselProps> = {
+type Story = StoryObj<typeof Carousel>;
+
+export const Default: Story = {
   args: {
-    slides: slides.map(({ image, title }) => ({
-      image,
-      title,
-    })),
+    slides: [
+      {
+        image: "https://via.placeholder.com/293x146.png?text=Slide+1",
+        title: "Slide 1",
+        description: "Description of Slide 1",
+        onClick: () => alert("Slide 1 clicked"),
+      },
+      {
+        image: "https://via.placeholder.com/293x146.png?text=Slide+2",
+        title: "Slide 2",
+        description: "Description of Slide 2",
+        onClick: () => alert("Slide 2 clicked"),
+      },
+      {
+        image: "https://via.placeholder.com/293x146.png?text=Slide+3",
+        title: "Slide 3",
+        description: "Description of Slide 3",
+        onClick: () => alert("Slide 3 clicked"),
+      },
+    ],
     interval: 3000,
+    width: "293px",
+    height: "146px",
+  },
+};
+
+export const NoDescription: Story = {
+  args: {
+    slides: [
+      {
+        image: "https://via.placeholder.com/293x146.png?text=Slide+1",
+        title: "Slide 1",
+        onClick: () => alert("Slide 1 clicked"),
+      },
+      {
+        image: "https://via.placeholder.com/293x146.png?text=Slide+2",
+        title: "Slide 2",
+        onClick: () => alert("Slide 2 clicked"),
+      },
+    ],
+    interval: 5000,
+    width: "293px",
+    height: "146px",
   },
 };

@@ -18,11 +18,11 @@ const Card: React.FC<CardProps> = ({
   image,
   title,
   description,
-  cardWidth = "16rem",
-  cardHeight = "24rem",
+  cardWidth = "153px",
+  cardHeight = "204rem",
 }) => (
   <div
-    className="flex-shrink-0 cursor-pointer rounded-lg overflow-hidden shadow-lg"
+    className="flex-shrink-0 cursor-pointer rounded-[13px] overflow-hidden shadow-lg"
     style={{
       width: cardWidth,
       height: cardHeight,

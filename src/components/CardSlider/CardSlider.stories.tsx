@@ -39,8 +39,8 @@ const cardsData = [
 export const Default: StoryObj<CardSliderProps> = {
   args: {
     cardsData,
-    cardWidth: "16rem", // Default card size
-    cardHeight: "24rem",
+    cardWidth: "153px", // Default card size
+    cardHeight: "204px",
   },
 };
 
