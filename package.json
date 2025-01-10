@@ -1,7 +1,7 @@
 {
   "name": "movie-design-hv",
   "private": false,
-  "version": "1.4.1",
+  "version": "1.5.2",
   "type": "module",
   "main": "./dist/movie-design-hv.umd.js",
   "module": "./dist/movie-design-hv.es.js",

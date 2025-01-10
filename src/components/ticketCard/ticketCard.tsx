@@ -24,7 +24,7 @@ const TicketCard: React.FC<TicketInfoProps> = ({
   isPaymentSuccess = false,
 }) => {
   return (
-    <div className="flex justify-center items-center min-h-screen">
+    <div className="flex justify-center items-center">
       {/* Ticket Container */}
       <div className="flex items-stretch relative">
         {/* Left Section */}
