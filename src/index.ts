@@ -25,6 +25,8 @@ export {default as SlideShow} from "./components/slideShow/slideShow";
 export {default as TicketCard} from "./components/ticketCard/ticketCard";
 export {default as Icon} from "./components/icon/icon";
 export {default as HomeHero} from "./components/homeHero/homeHero";
+export {default as Home} from "./components/HomeLayout/HomeLayout";
+export {default as PopcornNav} from "./components/popcorn/popcorn"
 
 export type {PaymentMethodProps} from "./components/paymentMethod/paymentMethod";
 export type {SlideshowProps} from "./components/slideShow/slideShow";
