@@ -9,6 +9,7 @@ export type IconProps = {
   bgColor?: string; // Background color of the icon
   rounded?: string; // Border radius of the icon
   className?: string; // Additional Tailwind classes
+  imgClassName?:string;
   onClick?: () => void; // Click handler
 };
 
@@ -16,6 +17,7 @@ const Icon: React.FC<IconProps> = ({
   URL,
   iconColor = "inherit",
   iconBorderClr = "transparent",
+  imgClassName="",
   iconBorderStyle = "solid",
   bgColor = "transparent",
   rounded = "rounded-none",
@@ -46,7 +48,7 @@ const Icon: React.FC<IconProps> = ({
         <img
           src={URL}
           alt="icon"
-          className="h-10 w-10"
+          className={`${imgClassName}`}
           style={{
             color: iconColor, // In case of colored icons (e.g., monochrome SVGs)
           }}
