@@ -36,8 +36,8 @@ const Layout = () => {
       <Footer className="fixed bottom-0 w-full flex justify-around bg-black bg-opacity-90 px-4 py-3" rounded={true}>
         <Icon 
           URL="/heart 1.png"
-          className="w-8 h-8"
-          imgClassName="w-6 h-6"
+          className="w-9 h-8"
+          imgClassName="w-8 h-6"
           iconColor="white"
         />
         <Icon 

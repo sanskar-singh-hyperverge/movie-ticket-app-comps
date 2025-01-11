@@ -10,7 +10,7 @@ export type GenericNavProps = {
 const GenericNav = ({currentStep, totalStep, onBackClick}: GenericNavProps) => {
 
     return (
-        <div className="flex w-screen justify-between items-center px-4 py-2 bg-white">
+        <div className="flex w-screen justify-between items-center px-4 py-2">
             {/* add a back rectangular icon */}
             <button className="flex items-center justify-center w-10 h-10 bg-gray-200 rounded-xl text-gray-500" onClick={onBackClick}>
                 <svg
